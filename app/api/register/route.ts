@@ -15,11 +15,13 @@ export async function POST(req: NextRequest){
         const hasPassword = await bcrypt.hash(password, 10)       
         const lt = await prisma.userLogin.findUnique({
             where: {
-                email: email
+                email
             }
         })
-        if(lt){
-            return Response.json({Message: 'Usuario já logodo', }, {status: 200})
+        console.log(lt)
+        if(!!lt){
+            console.log('if')
+            return Response.json({Message: 'Usuario já logodo', }, {status: 300})
         }
         else{
             const user = await prisma.userLogin.create({

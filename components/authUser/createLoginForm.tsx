@@ -45,6 +45,7 @@ interface Profile {
 
 export default function CreateAccountForm({ isLogin, SetisLogin }: NewType){
     const router = useRouter()
+    const [islog, setIslog] = useState(false)
     const [pass, setPass] = useState(false)
     const [isdisable, setDisable] = useState(false)
     const [d, setD] = useState([
@@ -79,15 +80,8 @@ export default function CreateAccountForm({ isLogin, SetisLogin }: NewType){
         const { email, password, UserName } = values 
                 const data = async () => {
                     try {
-                        let logado = false
-                        console.log(ls)
-                        ls.map((e:{email:string; password:string; Username:string}) => {
-                            console.log(e.email)
-                            if(e.email == email) logado = true
-                        })
-                        
-                        if(!logado){
-                            const ls = async () =>{
+
+                                const ls = async () =>{
                                 const response = await fetch("/api/register", {
                                     method: 'POST',
                                     headers: {
@@ -101,23 +95,28 @@ export default function CreateAccountForm({ isLogin, SetisLogin }: NewType){
                                     })
                                 });
                                 console.log(response.status, 'status')
-                                if (!response.ok) {
+                                if (response.status === 300) {
+                                    setDisable(false)
+                                    setIslog(true)
+                                    console.log("usuario logado")
+                                }
+                                else if(response.status != 300) setIslog(false)
+                                else if(!response.ok) {
                                     throw new Error(`HTTP error! status: ${response.status}`);
                                 }
-                                
+                                 
                                 
                             }
                             
                             ls()
-                        }else{
-                            console.log("user logado")
-                        }
+                        
                     } catch (error) {
                         console.error('There was a problem with the fetch operation: ' + error);
                     }
                 }
                 l = true
                 data()
+                if(islog) router.refresh()
         
         }catch(error){
             console.log('Erro no Create-Account Submit', error)
@@ -125,14 +124,9 @@ export default function CreateAccountForm({ isLogin, SetisLogin }: NewType){
     }
     return(
         <div className="flex z-40 flex-col justify-center items-center space-y-2">
-
-{!isLogin ? <div onClick={()=>SetisLogin(isLogin ? false : true)} className=" w-screen h-screen flex justify-center items-center absolute  bg-red-500 ">
-                        <div className="">
-                        <Construction />
-                        </div>
-                        <h1>O usuario já está cadastrado, tente outrou e-mail</h1>
-                    </div>: ''}
+             
             <span className="text-lg text-red-600">You wuill love it</span>
+            <div className="h-4 text-red-500">{islog ? "usuario ja cadastrado...": ''}</div>
             {/* Passamos por meio de props todos os elementos de form, criamos um forme e informamos que o evento de submição será realizado pelo handleSubmit por meio do form */}
             <Form {...form}>
                 <form
@@ -165,6 +159,7 @@ export default function CreateAccountForm({ isLogin, SetisLogin }: NewType){
                         name="email"
                         render={({field}) => (
                             <FormItem>
+                               
                                 <FormLabel>E-Mail</FormLabel>
                                 <FormControl>
                                     <Input
@@ -198,7 +193,7 @@ export default function CreateAccountForm({ isLogin, SetisLogin }: NewType){
                     />
                     {pass ? <div className="text-red-500">As senhas precisão ser iguais</div>: ''}
                     
-                    <Button    className=" m-4 text-white border  active:text-white active:shadow-black active:h-8 active:bg-black" type="submit">Create Your Account</Button>
+                    <Button disabled={isdisable}   className=" m-4 text-white border  active:text-white active:shadow-black active:h-8 active:bg-black" type="submit">Create Your Account</Button>
                     
                 </form>
                 

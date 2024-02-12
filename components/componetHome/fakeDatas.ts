@@ -1,29 +1,13 @@
 import {  infor } from "./GridElements";
 
-   export const fakedados:Array<infor> = [
-        {
-            id:'2',
+   export const fakedados:Array<infor> = []
+   for(let i = 0; i<=100; i++){
+        fakedados.push({
+            id: `${i}`,
             value: "sdsdsdsd",
-            name: 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit',
-            description: 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto'
-    },
-    {
-        id:'3',
-        value: "sdsdsdsd",
-        name: 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit',
-        description: 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto'
-},
-{
-    id:'4',
-    value: "sdsdsdsd",
-    name: 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit',
-    description: 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto'
-},
-{
-    id:'5',
-    value: "sdsdsdsd",
-    name: 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit',
-    description: 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto'
-},
-
-    ]
+            seccion: 'tecnologia',
+            name: `sunt aut facere repellat id ${i}`,
+            description: 'quia et suscipit\nsuscipit recusandae consequuntur expedita et ',
+            image: 'https://i.dell.com/is/image/DellContent/content/dam/ss2/page-specific/category-pages/inspiron-5330-categorypage-rf-800x620.png?fmt=png-alpha&wid=800&hei=620'
+    })
+   }
