@@ -1,13 +1,17 @@
-var string1 = "teste";
-var string2 = "stete";
+const ls= {
+    id:10,
+    name:12,
+}
 
-// separando
-var array1 = string1.split("");
-var array2 = string2.split("");
+const mobs = [
+    {
+        id:10,
+        name:12,
+    },
+    {
+        id:10,
+        name:"kelton",
+    }
+]
 
-// colocando em ordem os caracteres e remontando as strings
-array1 = array1.sort().join('');
-array2 = array2.sort().join('');
-
-// verificando se sao iguais
-console.log( array1 == array2 );
+console.log(mobs[0].id === ls.id)

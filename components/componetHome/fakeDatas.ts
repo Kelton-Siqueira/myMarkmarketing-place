@@ -5,7 +5,7 @@ import {  infor } from "./GridElements";
         fakedados.push({
             id: `${i}`,
             value: "sdsdsdsd",
-            seccion: 'tecnologia',
+            typeProductos: 'tecnologia',
             name: `sunt aut facere repellat id ${i}`,
             description: 'quia et suscipit\nsuscipit recusandae consequuntur expedita et ',
             image: 'https://i.dell.com/is/image/DellContent/content/dam/ss2/page-specific/category-pages/inspiron-5330-categorypage-rf-800x620.png?fmt=png-alpha&wid=800&hei=620'

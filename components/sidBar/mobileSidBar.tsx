@@ -23,7 +23,7 @@ export function DialogDemo() {
             Discover
           </h2>
           <div className="space-y-1 w-full">
-            <Link href={"/PagesUser/iaPages"} className="w-40 flex gap-2 items-center justify-start p-2 hover:bg-slate-500 hover:text-white rounded-xl  ">
+            <Link href={""} className="w-40 flex gap-2 items-center justify-start p-2 hover:bg-slate-500 hover:text-white rounded-xl  ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -174,7 +174,7 @@ export function DialogDemo() {
         </div>
       </div>
     </div>
-            ) : <Button className="relative bg-zinc-400 my-[1.3rem]  w-20 mx-2 flex  items-center justify-center " onClick={() => setBtls(true)}><AlignJustify /></Button>
+            ) : <Button className="relative bg-zinc-400 my-[2.3rem]  w-20 mx-2 flex  items-center justify-center " onClick={() => setBtls(true)}><AlignJustify /></Button>
         }
     </div>
   )

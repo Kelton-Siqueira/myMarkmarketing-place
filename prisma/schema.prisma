@@ -21,20 +21,29 @@ model Account {
   scope             String?
   id_token          String?
   session_state     String?
-  user              userLogin @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user              UserLogin @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
-
+model Productos {
+  id            String @id
+  name          String
+  description   String
+  value         String
+  typeProductor String 
+  quantity      Int
+  id_productos  String
+  sessionProductos String
+}
 model Session {
   id           String    @id @default(cuid())
   sessionToken String    @unique
-  userId       String
+  userId       String 
   expires      DateTime
-  user         userLogin @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user         UserLogin @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-model userLogin {
+model UserLogin {
   id            String    @id @unique @default(uuid())
   name          String
   email         String    @unique
@@ -43,16 +52,10 @@ model userLogin {
   emailVerified DateTime?
   image         String?
   accounts      Account[]
-  sessions      Session[]
+  sessions      Session[] 
 }
 
-model Productos {
-  id            String @id @default(uuid())
-  name          String
-  description   String
-  value         String
-  typeProductor String
-}
+
 
 model VerificationToken {
   identifier String

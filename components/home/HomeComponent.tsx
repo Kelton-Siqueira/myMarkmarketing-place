@@ -29,7 +29,7 @@ const [values, setValues] = useState('')
           <aside className="w-40 z-20 fixed  h-screen"><SidebarGlobal /></aside>
         </div>
         <div className="flex justify-center my-16">
-          <div className="grid grid-cols-3 z-0">
+          <div className="grid grid-cols-1 md:grid-cols-3 z-0">
             <GridElements values={values} dados={fakedados} />
           </div>
         </div>
