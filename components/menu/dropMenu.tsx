@@ -1,3 +1,4 @@
+"use client"
 import {
     Cloud,
     CreditCard,
@@ -30,20 +31,43 @@ import {
     DropdownMenuSubTrigger,
     DropdownMenuTrigger,
   } from "@/components/ui/dropdown-menu"
+import { signOut, useSession } from "next-auth/react"
+import { useRouter } from "next/navigation"
+import { cn } from "@/lib/utils"
   
-  export function DropdownMenuDemo() {
+
+interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
+    
+}
+
+  export function DropdownMenuDemo({ isDisable}: {isDisable: string}) {
+          const route = useRouter()
+    const ls = () =>{
+      const ls = () => signOut()
+      ls()
+      route.push("/ls")
+    }
+    const profile = useSession()
+    console.log(profile.data?.user?.email, 'profile')
+    const user = !!profile.data?.user?.email ? profile.data?.user.name : 'Realize o login'
+
+    const routerProfile = () =>{
+      console.log("clicou")
+      return route.push("/userProfile")
+    }
     return (
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="outline">Open</Button>
+      <div  className={cn("", isDisable)}>
+         <DropdownMenu  >
+        <DropdownMenuTrigger  asChild>
+          <Button  variant="outline">Profile</Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56">
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
+          <DropdownMenuLabel>{user}</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
             <DropdownMenuItem>
               <User className="mr-2 h-4 w-4" />
-              <span>Profile</span>
+              <span onClick={routerProfile}>Profile</span>
               <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
             </DropdownMenuItem>
             <DropdownMenuItem>
@@ -87,11 +111,12 @@ import {
           <DropdownMenuSeparator />
           <DropdownMenuItem>
             <LogOut className="mr-2 h-4 w-4" />
-            <span>Log out</span>
+            <span onClick={ls}>Log out</span>
             <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
+      </div>
     )
   }
   

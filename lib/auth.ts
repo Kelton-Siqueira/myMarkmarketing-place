@@ -52,6 +52,7 @@ export const authOptions : NextAuthOptions = {
     secret: process.env.SECRET,
     debug: process.env.DEBUG_ENABLED === "development",
     pages: {
-        signIn: "/login"
+        signIn: "/login",
+        
     }
 }

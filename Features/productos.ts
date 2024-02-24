@@ -1,6 +1,5 @@
 import prisma from '@/lib/db';
 import React, { Dispatch, SetStateAction, use } from 'react';
-import { json } from 'stream/consumers';
 export interface infor {
     name: string;
     id: string;
@@ -10,7 +9,7 @@ export interface infor {
     session?: string;
     typeProductos: string;
 }
-
+//Adiciona os produtos sendo que é apenas uma função que chama a route
 async function addProductor({ name, id, value, description, typeProductos, session }: infor) {
 
     const response = await fetch("/api/productos", {
@@ -27,8 +26,6 @@ async function addProductor({ name, id, value, description, typeProductos, sessi
             quantity: 1,
             session
         })
-
-
     });
     if (!response.ok) throw new Error("Erro no response post do Productos...")
 }
@@ -60,11 +57,6 @@ async function removeDataQuantity({ id }: { id: string }) {
     if (!response.ok) throw new Error("Erro no response do Productos...")
 }
 
-async function exportquantity({ id }: { id: string }) {
-
-    return 'oi'
-}
-
 async function getProductos({ id, session }: { id: string; session: string }) {
     const isbody = true
     const response = await fetch("/api/getProductos", {
@@ -84,4 +76,4 @@ async function getProductos({ id, session }: { id: string; session: string }) {
     return await response.json()
 }
 
-export { addProductor, delelteProductor, removeDataQuantity, exportquantity, getProductos }
+export { addProductor, delelteProductor, removeDataQuantity, getProductos }

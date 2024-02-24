@@ -31,10 +31,6 @@ const formSchema = z.object({
 
 
 
-type NewType = {
-    SetisLogin: React.Dispatch<React.SetStateAction<boolean>>;
-    isLogin: boolean
-}
 
 interface Profile {
     id: number;
@@ -43,7 +39,7 @@ interface Profile {
     email:string;
 }
 
-export default function CreateAccountForm({ isLogin, SetisLogin }: NewType){
+export default function CreateAccountForm(){
     const router = useRouter()
     const [islog, setIslog] = useState(false)
     const [pass, setPass] = useState(false)
@@ -104,6 +100,13 @@ export default function CreateAccountForm({ isLogin, SetisLogin }: NewType){
                                 else if(!response.ok) {
                                     throw new Error(`HTTP error! status: ${response.status}`);
                                 }
+                                    const res = await signIn<"credentials">("credentials", {
+                                        ...values,
+                                        redirect: false,
+                                      });
+                                      if(res) throw new Error("Erro no response do signin")
+                                      router.push("/home")
+                                
                                  
                                 
                             }

@@ -7,19 +7,19 @@ interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
     
 }
 
-export function SidebarGlobal({ className }: SidebarProps) {
+export function SidebarGlobal() {
   return (
-    <div className="bg-red-500 ">
+    <div className="">
         <div className=" z-40  flex   my-[2.12rem] justify-start ">
             <DialogDemo />
         </div>
         <div className=" z-20 h-full my-0  hidden md:block   w-56 fixed">
         
-        <div className={cn("hidden md:flex   z-30  bg-red-500x' fixed ", className)}>
+        <div className={"hidden md:flex  z-30 w-44  bg-red-500x' fixed "}>
       <div className="space-y-4 py-4  w-52 flex items-start justify-center flex-col">
         <div className="px-3 py-2">
           <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
-            Discover
+            Discoveres
           </h2>
           <div className="space-y-1 w-full">
             <Link href={"/PagesUser/iaPages"} className="w-40 flex gap-2 items-center justify-start p-2 hover:bg-slate-500 hover:text-white rounded-xl  ">

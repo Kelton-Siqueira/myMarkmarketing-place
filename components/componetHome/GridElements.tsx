@@ -2,8 +2,7 @@
 import { Separator } from "@radix-ui/react-separator";
 import  {laePostStore}  from '@/app/storage/postStorage'
 import onStorage from "@/app/storage/setStorage";
-import { addProductor, exportquantity, getProductos, removeDataQuantity } from "@/app/Features/productos";
-import { useState } from "react";
+import { addProductor, getProductos, removeDataQuantity } from "@/Features/productos";
 import { useSession } from "next-auth/react";
  export interface Elements{
     dados:      Array<infor>;
