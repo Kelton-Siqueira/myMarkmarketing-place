@@ -6,9 +6,11 @@ import { fakedados } from "@/components/componetHome/fakeDatas";
 import NavAuth from "@/components/navBar/autNav";
 import { useState } from "react";
 import { SidebarGlobal } from "../sidBar/SideBar";
+import { useSession } from "next-auth/react";
 
 export default  function HomeComponent({dados}:Elements) {
 const [values, setValues] = useState('')
+
   return (
     <div className="h-screen overflow-x-hidden">
       <div className="">
